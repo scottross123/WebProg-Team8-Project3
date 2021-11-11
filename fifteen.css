@@ -293,9 +293,9 @@ pre {
 }
 
 .red:hover {
-    color: red;
+    color: #006600;
     text-decoration: underline;
-    border-color: #006600;
+    border-color: red;
     border-width: 5px;
     cursor: pointer;
 }
