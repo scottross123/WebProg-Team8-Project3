@@ -15,6 +15,7 @@
   *  multiple backgrounds
   *  
   *  
+* Summary why we chose this project
 * Presentation
   *  user - design - testing
 * Video 
