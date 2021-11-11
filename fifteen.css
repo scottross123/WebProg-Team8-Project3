@@ -1,14 +1,3 @@
-/*
-CSE 154 Homework 4 Section AE
-Akash Rama- This page has the CSS elements for a fifteen tiles
-It formats all the elements from the HTML page
-*/
-
-/*
-
-Homework and Project writeup shared style sheet
-*/
-
 a img {
 	border: none;
 }
@@ -18,6 +7,8 @@ body {
 	font-size: 12pt;
 	background-color: white;
 	color: black;
+	background-image: url('bkg4.png');
+	background-size: 2000px 1000px;
 }
 
 .boxed {
