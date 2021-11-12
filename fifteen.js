@@ -11,21 +11,9 @@ a classic game
         let empty = "L3T3";
         highlight(empty);
 
-        switch (Math.floor(Math.random() * 3)) {
-            case 0:
-                document.body.style.backgroundImage = "url('bkg1.jpeg')";
-                break;
-            case 1:
-                document.body.style.backgroundImage = "url('bkg2.jpeg')";
-                break;
-            case 2:
-                document.body.style.backgroundImage = "url('bkg3.png')";
-                break;
-            case 3:
-                document.body.style.backgroundImage = "url('bkg4.png')";
-                break;
-        }
-
+        // random background selection
+        let rnd_bkg = Math.floor(Math.random() * 3) + 1;
+        document.body.style.backgroundImage = "url('bkg" + rnd_bkg + ".jpeg')";
         
         let pieces = document.querySelectorAll(".pieces");
         for (let i = 0; i < pieces.length; i++) {
@@ -162,11 +150,8 @@ a classic game
         }
         return emptySpace;
     }
+})();
 
-
-    
-})()
-
-function backgroundSelect() {  
-    document.body.style.backgroundImage = "url('bkg3.png')";  
-}
+    function backgroundSelect(bkg) {  
+        document.body.style.backgroundImage = "url('" + bkg + ".jpeg')";
+    }
