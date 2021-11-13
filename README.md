@@ -13,8 +13,8 @@
 * extra features (4)
   *  end of game notification
   *  multiple backgrounds
-  *  
-  *  
+  *  cheat button
+  *  timer/move counter
 * Summary why we chose this project
 * Presentation
   *  user - design - testing
