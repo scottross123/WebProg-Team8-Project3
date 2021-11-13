@@ -270,6 +270,20 @@ pre {
     margin: auto;
 }
 
+#controls {
+  height: 50px;
+  position: relative;
+}
+
+#shufflebutton {
+	margin: 0;
+  	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	-ms-transform: translate(-50%, -50%);
+  	transform: translate(-50%, -50%);
+}
+
 .pieces {
     width : 90px;
     height : 90px;

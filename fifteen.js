@@ -31,6 +31,10 @@ a classic game
         document.getElementById("shufflebutton").onclick = function() {
             empty = shuffle(empty);
         };
+
+        /*document.getElementById("select").onclick = function() {
+
+        };*/
     }
     
     // creates the inital tile set
@@ -55,10 +59,12 @@ a classic game
     //returns an array of all current tiles
     function currentTiles() {
         let present = document.querySelectorAll(".pieces");
+        console.log(present);
         let everything = [];
         for (let i = 0; i < present.length; i++) {
             everything.push(present[i].currentPos);
         }
+        console.log(everything);
         return everything;
     }
     
@@ -149,6 +155,10 @@ a classic game
             highlight(emptySpace);
         }
         return emptySpace;
+    }
+
+    function isFinished() {
+
     }
 })();
 
