@@ -14,6 +14,8 @@ a classic game
         // random background selection
         let rnd_bkg = Math.floor(Math.random() * 3) + 1;
         document.body.style.backgroundImage = "url('bkg" + rnd_bkg + ".jpeg')";
+
+        let win = currentTiles();
         
         let pieces = document.querySelectorAll(".pieces");
         for (let i = 0; i < pieces.length; i++) {
@@ -24,7 +26,12 @@ a classic game
                     clear();
                     highlight(empty);
                 }
+
+                //check if game is won each move
+                if (isFinished(win))
+                    console.log('winner winner chicken dinner');
             };
+
                 
         }
         
@@ -32,9 +39,6 @@ a classic game
             empty = shuffle(empty);
         };
 
-        /*document.getElementById("select").onclick = function() {
-
-        };*/
     }
     
     // creates the inital tile set
@@ -157,8 +161,13 @@ a classic game
         return emptySpace;
     }
 
-    function isFinished() {
+    // check if board as been won
+    function isFinished(win) {
 
+        for (let i = 0; i < 15; i++)
+            if (currentTiles()[i] != win[i]) return false;
+
+        return true;
     }
 })();
 
