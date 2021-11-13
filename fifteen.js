@@ -4,8 +4,9 @@ a classic game
 */
 
 "use strict";
-
 (function() {
+    let cheatWin;
+
     window.onload = function() {
         create();
         let empty = "L3T3";
@@ -28,19 +29,25 @@ a classic game
                 }
 
                 //check if game is won each move
-                if (isFinished(win))
+                if (isFinished(win)){
                     console.log('winner winner chicken dinner');
+                    winScreen();
+                }
             };
 
-                
+        cheatWin = document.querySelectorAll(".pieces");
         }
         
         document.getElementById("shufflebutton").onclick = function() {
             empty = shuffle(empty);
         };
 
+        document.getElementById("cheatbutton").onclick = function() {
+            cheat();
+        };
+
     }
-    
+
     // creates the inital tile set
     function create() {
         let input = document.getElementById("puzzlearea");
@@ -163,14 +170,40 @@ a classic game
 
     // check if board as been won
     function isFinished(win) {
-
         for (let i = 0; i < 15; i++)
             if (currentTiles()[i] != win[i]) return false;
 
         return true;
     }
+
+    function winScreen() {
+        let img = document.createElement("img");
+        img.src = "victory.png";
+        img.setAttribute("style", "z-index: 9");
+
+        let area = document.getElementById("puzzlearea");
+        area.appendChild(img);
+    }
+
+    function cheat() {
+
+        // incomplete
+
+        //let currentPieces = document.getElementsByClassName("puzzlearea").innerHTML;
+
+        console.log(cheatWin);
+        console.log(document.querySelectorAll(".pieces"));
+
+        for (let i = 0; i < 15; i++) {
+           console.log(document.querySelectorAll(".pieces")[i].currentPos);
+           document.querySelectorAll(".pieces")[i].currentPos = cheatWin[i].currentPos;
+        }
+
+    }
+
 })();
 
     function backgroundSelect(bkg) {  
         document.body.style.backgroundImage = "url('" + bkg + ".jpeg')";
     }
+
