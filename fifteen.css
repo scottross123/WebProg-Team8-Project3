@@ -270,7 +270,7 @@ pre {
     margin: auto;
 }
 
-#controls {
+.container {
   height: 50px;
   position: relative;
 }
@@ -283,6 +283,12 @@ pre {
   	-ms-transform: translate(-50%, -50%);
   	transform: translate(-50%, -50%);
 }
+
+#timer, #moves {
+	margin-top: 0px;
+	text-align: center;
+}
+
 
 .pieces {
     width : 90px;

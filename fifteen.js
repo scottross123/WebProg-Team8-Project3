@@ -7,6 +7,11 @@ a classic game
 (function() {
     let cheatWin;
 
+    let timeElapsed = 0;
+    let timer;
+
+    let movesMade = 0;
+
     window.onload = function() {
         create();
         let empty = "L3T3";
@@ -24,6 +29,7 @@ a classic game
                 if (pieces[i].classList.contains("red")) {
                     let pass = pieces[i];
                     empty = move(pass, empty);
+                    moveCounter();
                     clear();
                     highlight(empty);
                 }
@@ -156,6 +162,9 @@ a classic game
     
     // produces a random order of tiles
     function shuffle(empty) {
+        endTime();
+        resetTime();
+        resetMoves();
         let emptySpace = empty;
         for (let i = 0; i < 1000; i++) {
             let red = document.querySelectorAll(".red");
@@ -165,6 +174,8 @@ a classic game
             clear();
             highlight(emptySpace);
         }
+        startTime();
+
         return emptySpace;
     }
 
@@ -199,6 +210,38 @@ a classic game
            document.querySelectorAll(".pieces")[i].currentPos = cheatWin[i].currentPos;
         }
 
+    }
+
+    function tick() {
+        timeElapsed++;
+        document.getElementById("timer").innerHTML = "Time: " + timeElapsed + "s";
+    }
+
+    // these functions control the game timer
+    function startTime() {
+        timer = setInterval(tick, 1000);
+        console.log(timer);
+    }
+
+    function endTime() {
+        clearInterval(timer);
+    }
+
+    function resetTime() {
+        timeElapsed = 0;
+        document.getElementById("timer").innerHTML = "Time: 0s"; 
+    }
+
+
+    // these functions controls move count
+    function moveCounter() {
+        movesMade++;
+        document.getElementById("moves").innerHTML = "Moves: " + movesMade; 
+    }
+
+    function resetMoves() {
+        movesMade = 0;
+        document.getElementById("moves").innerHTML = "Moves: " + 0; 
     }
 
 })();
