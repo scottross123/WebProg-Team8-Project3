@@ -18,8 +18,8 @@ a classic game
         highlight(empty);
 
         // random background selection
-        let rnd_bkg = Math.floor(Math.random() * 3) + 1;
-        document.body.style.backgroundImage = "url('bkg" + rnd_bkg + ".jpeg')";
+        let rndBkg = Math.floor(Math.random() * 3) + 1;
+        document.body.style.backgroundImage = "url('bkg" + rndBkg + ".jpeg')";
 
         let win = currentTiles();
         
@@ -165,6 +165,9 @@ a classic game
         endTime();
         resetTime();
         resetMoves();
+        //play music
+        stopSong();
+        playSong();
         let emptySpace = empty;
         for (let i = 0; i < 1000; i++) {
             let red = document.querySelectorAll(".red");
@@ -242,6 +245,25 @@ a classic game
     function resetMoves() {
         movesMade = 0;
         document.getElementById("moves").innerHTML = "Moves: " + 0; 
+    }
+
+    // music
+
+    document.getElementById('music').addEventListener('ended', function(){
+        let rndSong = Math.floor(Math.random() * 3) + 1;
+        let song = new Audio(rndSong + ".mp3");
+        song.play();
+    });
+
+    function playSong() {
+        let rndSong = Math.floor(Math.random() * 3) + 1;
+        document.getElementById("music").setAttribute('src', rndSong + ".mp3");
+        document.getElementById("music").play();
+    }
+
+    function stopSong() {
+        document.getElementById("music").pause();
+        document.getElementById("music").currentTime = 0;
     }
 
 })();
