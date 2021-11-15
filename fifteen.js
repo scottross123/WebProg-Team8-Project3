@@ -1,9 +1,12 @@
-/*
-Akash Rama- This page has the JavaScript elements for fifteen tiles which is 
-a classic game
-*/
+// music
+document.getElementById('music').addEventListener('ended', function(){
+    let rndSong = Math.floor(Math.random() * 3) + 1;
+    console.log("song: " + rndSong);
+    this.src = "./music/" + rndSong + ".mp3";
+    this.play();
+});
 
-"use strict";
+// everything
 (function() {
     let cheatWin;
 
@@ -22,13 +25,6 @@ a classic game
         // random background selection
         let rndBkg = Math.floor(Math.random() * 3) + 1;
         document.body.style.backgroundImage = "url('./images/bkg" + rndBkg + ".jpeg')";
-
-        // music
-        document.getElementById('music').addEventListener('ended', function(){
-        let rndSong = Math.floor(Math.random() * 3) + 1;
-        let song = new Audio("./music/" + rndSong + ".mp3");
-        song.play();
-        });
 
         let win = currentTiles();
         
@@ -186,7 +182,7 @@ a classic game
         return emptySpace;
     }
 
-    // helper function to reset everything for shufflexx
+    // helper function to reset everything for shuffle
     function rest() {
         gameStart = true;
         endTime();
@@ -213,6 +209,8 @@ a classic game
 
         let area = document.getElementById("puzzlearea");
         area.appendChild(img);
+
+        endTime();
     }
 
     function cheat() {
