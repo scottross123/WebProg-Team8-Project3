@@ -12,6 +12,8 @@ a classic game
 
     let movesMade = 0;
 
+    let gameStart = false;
+
     window.onload = function() {
         create();
         let empty = "L3T3";
@@ -19,7 +21,14 @@ a classic game
 
         // random background selection
         let rndBkg = Math.floor(Math.random() * 3) + 1;
-        document.body.style.backgroundImage = "url('bkg" + rndBkg + ".jpeg')";
+        document.body.style.backgroundImage = "url('./images/bkg" + rndBkg + ".jpeg')";
+
+        // music
+        document.getElementById('music').addEventListener('ended', function(){
+        let rndSong = Math.floor(Math.random() * 3) + 1;
+        let song = new Audio("./music/" + rndSong + ".mp3");
+        song.play();
+        });
 
         let win = currentTiles();
         
@@ -35,7 +44,7 @@ a classic game
                 }
 
                 //check if game is won each move
-                if (isFinished(win)){
+                if (gameStart == true && isFinished(win)){
                     console.log('winner winner chicken dinner');
                     winScreen();
                 }
@@ -162,12 +171,7 @@ a classic game
     
     // produces a random order of tiles
     function shuffle(empty) {
-        endTime();
-        resetTime();
-        resetMoves();
-        //play music
-        stopSong();
-        playSong();
+        rest();
         let emptySpace = empty;
         for (let i = 0; i < 1000; i++) {
             let red = document.querySelectorAll(".red");
@@ -182,6 +186,17 @@ a classic game
         return emptySpace;
     }
 
+    // helper function to reset everything for shufflexx
+    function rest() {
+        gameStart = true;
+        endTime();
+        resetTime();
+        resetMoves();
+        stopSong();
+        playSong();
+        if (document.getElementById("victory") != null) document.getElementById("victory").remove();
+    }
+
     // check if board as been won
     function isFinished(win) {
         for (let i = 0; i < 15; i++)
@@ -193,6 +208,7 @@ a classic game
     function winScreen() {
         let img = document.createElement("img");
         img.src = "victory.png";
+        img.id = "victory";
         img.setAttribute("style", "z-index: 9");
 
         let area = document.getElementById("puzzlearea");
@@ -249,15 +265,9 @@ a classic game
 
     // music
 
-    document.getElementById('music').addEventListener('ended', function(){
-        let rndSong = Math.floor(Math.random() * 3) + 1;
-        let song = new Audio(rndSong + ".mp3");
-        song.play();
-    });
-
     function playSong() {
         let rndSong = Math.floor(Math.random() * 3) + 1;
-        document.getElementById("music").setAttribute('src', rndSong + ".mp3");
+        document.getElementById("music").setAttribute('src', "./music/" + rndSong + ".mp3");
         document.getElementById("music").play();
     }
 
@@ -269,6 +279,6 @@ a classic game
 })();
 
     function backgroundSelect(bkg) {  
-        document.body.style.backgroundImage = "url('" + bkg + ".jpeg')";
+        document.body.style.backgroundImage = "url('./images/" + bkg + ".jpeg')";
     }
 

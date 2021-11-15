@@ -263,7 +263,7 @@ pre {
 	padding: 0.2em 0.5em;
 }
 
-#puzzlearea {
+#puzzlearea, #victory {
     width: 400px;
     height: 400px;
     position: relative;
@@ -298,7 +298,7 @@ pre {
     border-style: solid;
     border-width: 5px;
     border-color: black;
-    background-image: url("./mariao.png");
+    background-image: url("./images/mariao.png");
     background-size: 400px 400px
 }
 
