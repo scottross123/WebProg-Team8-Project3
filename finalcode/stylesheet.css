@@ -50,10 +50,10 @@ img {
     float: right;
 }
 
-.mario { background: url("./images/mario.jpg"); }
-.luigi       { background: url("./images/luigi.png");       }
-.mariao2      { background: url("./images/mariao2.jpg");      }
-.toad        { background: url("./images/toad.png");        }
+.mario { background: url("mario.jpg"); }
+.luigi       { background: url("luigi.png");       }
+.mariao2      { background: url("mariao2.jpg");      }
+.toad        { background: url("toad.png");        }
 
 #one      { background-position: 0      0;      }
 #two      { background-position: -100px 0;      }
@@ -122,4 +122,8 @@ transform: translate(-100px, 0);
 
 .animate-right {
 transform: translate(100px, 0);
+}
+
+#validation {
+    text-align: right;
 }

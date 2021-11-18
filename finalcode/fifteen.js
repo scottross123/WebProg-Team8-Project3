@@ -8,10 +8,10 @@ var cell = [
 "fourteen", "fifteen", ""
 ];
 
-// Since we're going to shuffle the divs, copy the ids into the shuffle_t array
+// copy the ids into the shuffle_t array
 var shuffle_t = cell.slice();
 
-// Once shuffle_t, it's difficult to figure out which number is a digit, so just mapped numbers to digits
+// map numbers to digits
 var cellsD = {
 "one":1,  "two":2, "three":3, "four":4, "five":5, "six":6, "seven":7,"eight":8, "nine":9, "ten":10, "eleven":11, "twelve":12, 
 "thirteen":13, "fourteen":14, "fifteen":15, "sixteen":16
@@ -74,14 +74,12 @@ document.getElementById('music').addEventListener('ended', function(){
     this.play();
 });
 
-/**
- * Initializes the game to play
- * Displays a random image: one of the four possible options from the background array
- * Sets all of the different div (100x100) blocks to have a class of title and the random background
- */
+
+ // starts the game to play, displays random image, and creates board
+
 function Gamebagin() {
     var background_id = Math.floor((Math.random() * 4));
-    selected_background = "./images/" + background[background_id];
+    selected_background = background[background_id];
 
     document.getElementById(background[background_id]).selected = true; // Grab the selected option and mark it as selected
 
@@ -90,16 +88,15 @@ function Gamebagin() {
     }
 }
 
-/**
- * Once the user selects a new option from the drop-down menu, the image selected is populated
- * The background image of the main div and each of the block divs is replaced
- */
+// allows user to change background image
 function changeBackground() {
     var class_name_img = document.getElementById("characters").value;
 
     if (background.indexOf(class_name_img) < 0) {
         return;
     }
+
+    rest2();
 
     selected_background = class_name_img;
 
@@ -158,16 +155,22 @@ function rest() {
     removeWon();
 }
 
+// helper function to reset for background change
+function rest2() {
+    endTime();
+    resetTime();
+    resetMoves();
+    stopSong();
+    removeWon();
+}
+
 /**
- * Shuffles the board
- * Initializes the shuffle array to regular
- * Sets the empty block position
- * Loops through 500 times making sure the board is really shufflet
+ * shuffles the board
+ * initializes the shuffle array to regular and sets the empty block position
+ * loops through 500 times making sure the board is really shuffled
  * Generates a random number between 0 and 3: used for the movement array.
  * Checks to see if the movement that it selected for that particular block is set to 1, meaning that it can move,
  * otherwise it keeps trying a new random number.
- *   i.e. if the empty block is in the sixteenth block (helps to look at the ids array), the only movement that it can
- *        do is to the top or to the left (i.e. swap the position with it's neighbor). Otherwise, it can't move
  * Once the corrent movement is generated, the id of that movement is stored in movement. Looking at the movement
  * array, you'll notice that its indexes are mapped to top, right, bottom, left. If it needs to move to the top, you'll
  * need to subtract 4 from the current position.
@@ -178,10 +181,9 @@ function shuffle() {
     // play new music every shuffle
     rest();
 
-    shuffle_t = cell.slice(); // Reinitialize the shufflet array
+    shuffle_t = cell.slice(); // reinitialize the shuffle_t array
     var sixteen = 15;
 
-    // Set a loop to go through 500 times
     for (var i = 0; i < 500; i++) {
 
         var movement_cell = Math.floor((Math.random() * 4));
@@ -222,9 +224,7 @@ function shuffle() {
     displayBoard();
 }
 
-/**
- * Clears the inner html of the file and cycles through the shufflet array displaying the div's within main in the correct order.
- */
+// clears inner html and displays new board
 function displayBoard() {
     document.getElementById("main").innerHTML = "";
 
@@ -264,9 +264,7 @@ function displayBoard() {
     }
 }
 
-/**
- * Swaps the pieces and increments the total number of moves the player has done
- */
+// moves pieces
 function swapPieces(clickable_id, empty_id) {
     animateMovement(clickable_id, empty_id);
 
@@ -282,9 +280,7 @@ function swapPieces(clickable_id, empty_id) {
     }, 600);
 }
 
-/**
- * Animates the movement of the blocks
- */
+// animates movement
 function animateMovement(clickable_id, empty_id) {
     if (clickable_id - 4 == empty_id) {
         console.log(shuffle_t[clickable_id]);
@@ -298,13 +294,8 @@ function animateMovement(clickable_id, empty_id) {
     }
 }
 
-/**
- * Checks to see if the user won
- * Converts the two arrays into strings and compares them
- * If the user won, the end date is subtracted from the start date and the milliseconds are converted to seconds
- * The following items are displayed to the winner: total number of time elapsed in seconds, a winning image and
- * the number of moves used to complete the puzzle
- */
+ // checks to see if the user won
+ // converts the two arrays into strings and compares them
 function checkIfWon() {
     if (cell.toString() == shuffle_t.toString()) { // Test the image, time and number of turns by swapping == to !=
 
