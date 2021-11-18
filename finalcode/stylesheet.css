@@ -1,0 +1,125 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#wrapper {
+    margin: 0 auto;
+    width: 600px;
+    font-size: large;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#main {
+    margin: auto;
+    width:400px;
+    height:400px;
+    position: relative;
+}
+
+.tile {
+    width:96px;
+    height:96px;
+    float: left;
+    text-align: center;
+    border: 2px black solid;
+    border-radius: 10px;
+    vertical-align: middle;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 100px;
+    text-shadow: 1px 1px 2px black, 0 0 25px white, 0 0 5px white;
+}
+
+h1 {
+    text-align: center;
+    margin: auto;
+}
+
+button, select {
+    display: block;
+    margin: 10px auto;
+}
+
+img {
+    height: 30px;
+    float: right;
+}
+
+.mario { background: url("./images/mario.jpg"); }
+.luigi       { background: url("./images/luigi.png");       }
+.mariao2      { background: url("./images/mariao2.jpg");      }
+.toad        { background: url("./images/toad.png");        }
+
+#one      { background-position: 0      0;      }
+#two      { background-position: -100px 0;      }
+#three    { background-position: -200px 0;      }
+#four     { background-position: -300px 0;      }
+#five     { background-position: 0      -100px; }
+#six      { background-position: -100px -100px; }
+#seven    { background-position: -200px -100px; }
+#eight    { background-position: -300px -100px; }
+#nine     { background-position: 0      -200px; }
+#ten      { background-position: -100px -200px; }
+#eleven   { background-position: -200px -200px; }
+#twelve   { background-position: -300px -200px; }
+#thirteen { background-position: 0      -300px; }
+#fourteen { background-position: -100px -300px; }
+#fifteen  { background-position: -200px -300px; }
+#sixteen  { border: 2px solid white ; }
+
+.clickable {
+    transition: all 0.5s ease-in-out;
+}
+
+.clickable:hover {
+    border-color: red !important;
+    text-decoration: underline !important;
+    color: lightblue;
+    cursor: pointer;
+}
+
+#win {
+    font-size: 15px;
+    font-weight: bold;
+    margin: auto;
+    text-align: center;
+    display: block;
+}
+
+#win img {
+    float: none !important;
+    height: 100% !important;
+}
+
+.container {
+    margin:  auto;
+    height: 50px;
+    position: relative;
+}
+
+#timer, #moves {
+    text-align: center;
+    position: relative;
+    margin:  auto;
+}
+
+.animate-up {
+transform: translate(0, -100px);
+}
+
+.animate-down {
+transform: translate(0, 100px);
+}
+
+.animate-left {
+transform: translate(-100px, 0);
+}
+
+.animate-right {
+transform: translate(100px, 0);
+}
